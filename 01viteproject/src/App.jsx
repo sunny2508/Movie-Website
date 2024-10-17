@@ -4,7 +4,7 @@ import './App.css'
 import SearchIcon from './search.svg'
 import MovieCard from "./MovieCard"
 
- const API_URL = `http://omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`
+ const API_URL = `https://omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`
 
 function App() {
 
@@ -16,8 +16,6 @@ function App() {
     console.log(data.data.Search);
     setMovies(data.data.Search);
   }
-
-
 
   useEffect(()=>{
     searchMovies('Batman')
