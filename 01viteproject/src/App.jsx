@@ -13,9 +13,15 @@ function App() {
 
   const searchMovies = async (title)=>{
     const data = await axios.get(`${API_URL}&s=${title}`);
-    console.log(data.data.Search);
     setMovies(data.data.Search);
   }
+
+  const handleKeyDown = (e)=>{
+    if(e.key === "Enter")
+    {
+      searchMovies(searchTerm);
+    }
+  };
 
   useEffect(()=>{
     searchMovies('Batman')
@@ -28,8 +34,9 @@ function App() {
     <div className="search">
       <input placeholder="Search for a movie"
       value={searchTerm}
-      onChange={(e)=>setSearchTerm(e.target.value)}/>
-  
+      onChange={(e)=>setSearchTerm(e.target.value)}
+      onKeyDown={handleKeyDown}/>
+
       <img
      src={SearchIcon}
      alt='search'
